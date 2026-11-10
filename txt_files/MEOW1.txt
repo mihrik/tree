@@ -1,0 +1,32 @@
+digraph {
+
+splines=line;
+node1 [color="black", penwidth=1];
+node1 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "50  "; ]
+
+node1 -> node2 [color="black", penwidth=1];
+node2 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "0  "; ]
+
+node2 -> node3 [color="black", penwidth=1];
+node3 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "-20  "; ]
+
+node2 -> node4 [color="black", penwidth=1];
+node4 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "25  "; ]
+
+node1 -> node5 [color="black", penwidth=1];
+node5 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "100  "; ]
+
+node5 -> node6 [color="black", penwidth=1];
+node6 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "75  "; ]
+
+node5 -> node7 [color="black", penwidth=1];
+node7 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
+  label = "200  "; ]
+
+}
