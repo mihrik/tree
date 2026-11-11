@@ -18,7 +18,8 @@ typedef enum error_codes
     NULL_ROOT_MEANING             = 1,
     MEMORY_ALLOCATION_ERROR       = 2,
     INVALID_QUANTITY_OF_ARGUMENTS = 3,
-    UNAVAILABLE_FILE              = 4
+    UNAVAILABLE_FILE              = 4,
+    WRONG_DIRECTION               = 5
 } error_codes;
 
 typedef struct node_t
@@ -29,9 +30,17 @@ typedef struct node_t
     node_t *parent;
 } node_t;
 
-error_codes node_ctor(node_t *root, node_elem_t value);
+typedef enum directions
+{
+    LEFT  = 0,
+    RIGHT = 1
+} directions;
+
+error_codes node_ctor(node_t *root, node_elem_t value, directions dir);
 error_codes node_dtor(node_t **node);
 error_codes print_tree(FILE *fp, node_t *root);
 error_codes tree_dtor(node_t *root);
+error_codes akinator(node_t *node);
+error_codes read_tree(FILE *fp, node_t *node, node_t *prev_node);
 
 #endif

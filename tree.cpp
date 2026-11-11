@@ -7,22 +7,22 @@ int main(int argc, const char * const argv[])
     if (args_analysis(argc, argv) != SUCCESSFUL_RETURN)
         return INVALID_QUANTITY_OF_ARGUMENTS;
 
-    FILE *fp = fopen(TREE_DATA_FILE, "w+");
+    FILE *fp = fopen(TREE_DATA_FILE, "r");
 
-    node_t root = {.value = ROOT_VALUE, .left_child = NULL, .right_child = NULL, .parent = NULL};
+    node_t root = {.value = 0, .left_child = NULL, .right_child = NULL, .parent = NULL};
 
-    node_ctor(&root, 100);
-    node_ctor(&root, 0);
-    node_ctor(&root, 75);
-    node_ctor(&root, 25);
-    node_ctor(&root, -20);
-    node_ctor(&root, 200);
+    read_tree(fp, &root, NULL);
+    fclose(fp);
+
+    fp = fopen(TREE_DATA_FILE, "w");
+    akinator(&root);
 
     print_tree(fp, &root);
 
     print_html(&root, FNAME, PIC_NAME);
 
     tree_dtor(&root);
+    fclose(fp);
 
     return 0;
 }
