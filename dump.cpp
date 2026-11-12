@@ -9,11 +9,20 @@ error_codes print_spears(node_t *root, FILE *png)
     node_num++;
 
     if (node_num != 0)
-        fprintf(png, "node%d [color=\"black\", penwidth=1];\n", node_num);
+    {
+        if ( root->parent != NULL && root == root->parent->left_child)
+        {
+            fprintf(png, "node%d [color=\"green\", penwidth=1, label = \"Да\"];\n", node_num);
+        }
+        else if (root->parent != NULL)
+        {
+            fprintf(png, "node%d [color=\"red\", penwidth=1, label = \"Нет\"];\n", node_num);
+        }
+    }
 
     int cur_node = node_num;
 
-    fprintf(png, "node%d [shape=Mrecord; style = filled; fillcolor = \"#62e4545b\"; color = \"#000000\";\n", node_num);
+    fprintf(png, "node%d [shape=Mrecord; style = filled; fillcolor = \"#94e8f1\"; color = \"#000000\";\n", node_num);
     fprintf(png, "  label = \"" deb_spec "  \"; ]\n\n", root->value);
 
     if (root->left_child)

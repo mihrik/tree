@@ -48,6 +48,7 @@ error_codes node_dtor(node_t **node)
     node_dtor(&(*node)->right_child);
 
     (*node)->parent = NULL;
+    free((*node)->value);
     (*node)->value  = POISON;
 
     node_t *tmp = *node;
@@ -73,6 +74,7 @@ error_codes tree_dtor(node_t *root)
     root->left_child = NULL;
     root->right_child = NULL;
     root->parent = NULL;
+    free(root->value);
     root->value = POISON;
 
     return SUCCESSFUL_RETURN;
@@ -84,7 +86,7 @@ error_codes print_tree(FILE *fp, node_t *root)
 
     if (root != NULL)
     {
-        fprintf(fp, " (");
+        fprintf(fp, "(");
         fprintf(fp, deb_spec, root->value);
 
         if (root->left_child)
@@ -101,6 +103,8 @@ error_codes print_tree(FILE *fp, node_t *root)
 
 error_codes akinator(node_t *node)
 {
+    char user_input[MAX_PHRASE_LEN] = {};
+
     printf(deb_spec "?\n", node->value);
 
     int answer = get_option();
@@ -124,17 +128,24 @@ error_codes akinator(node_t *node)
                 puts("What value are you looking for?");
                 printf("Type it:");
 
-                node_elem_t new_val = 0;
+                node_elem_t new_val =  NULL;
                 node_elem_t old_val = node->value;
 
-                scanf(deb_spec, &new_val);
+                scanf(" %[^\n]" , user_input);
 
-                printf("What's the difference between " deb_spec " and " deb_spec "?\n", node->value,  new_val);
+                new_val = strdup(user_input);
 
-                scanf(deb_spec, &node->value);
+                printf("What's the difference between " deb_spec " and " deb_spec "?\n", new_val,  node->value);
+                printf("<" deb_spec ">"" is:", new_val);
 
                 node_ctor(node, new_val, LEFT);
                 node_ctor(node, old_val, RIGHT);
+
+                scanf(" %[^\n]" , user_input);
+
+                new_val = strdup(user_input);
+
+                node->value = new_val;
 
                 return SUCCESSFUL_RETURN;
         }
@@ -149,6 +160,7 @@ error_codes akinator(node_t *node)
 
 error_codes read_tree(FILE *fp, node_t *node, node_t *prev_node)
 {
+    char user_input[MAX_PHRASE_LEN] = {};
     int file_char = 0;
 
     if ((file_char = getc(fp)) == EOF)
@@ -159,7 +171,9 @@ error_codes read_tree(FILE *fp, node_t *node, node_t *prev_node)
 
     while ((file_char = getc(fp)) != '(');
 
-    fscanf(fp, deb_spec, &node->value);
+    fscanf(fp, "%[^()]", user_input);
+
+    node->value = strdup(user_input);
 
     while (1)
     {
@@ -181,7 +195,6 @@ error_codes read_tree(FILE *fp, node_t *node, node_t *prev_node)
                             tmp->left_child = NULL;
                             tmp->right_child = NULL;
                             tmp->parent = NULL;
-
 
                             if (node->left_child == NULL)
                             {

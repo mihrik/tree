@@ -1,24 +1,39 @@
 digraph {
 
 splines=line;
-node1 [color="black", penwidth=1];
-node1 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
-  label = "6  "; ]
+node1 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Преподаватель информатики  "; ]
 
-node1 -> node2 [color="black", penwidth=1];
-node2 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
-  label = "6  "; ]
+node1 -> node2 [color="green", penwidth=1, label = "Да"];
+node2 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Ведет лекции второй парой  "; ]
 
-node1 -> node3 [color="black", penwidth=1];
-node3 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
-  label = "45  "; ]
+node2 -> node3 [color="green", penwidth=1, label = "Да"];
+node3 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Дивари  "; ]
 
-node3 -> node4 [color="black", penwidth=1];
-node4 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
-  label = "45  "; ]
+node2 -> node4 [color="red", penwidth=1, label = "Нет"];
+node4 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Дединский  "; ]
 
-node3 -> node5 [color="black", penwidth=1];
-node5 [shape=Mrecord; style = filled; fillcolor = "#62e4545b"; color = "#000000";
-  label = "100  "; ]
+node1 -> node5 [color="red", penwidth=1, label = "Нет"];
+node5 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Кот  "; ]
+
+node5 -> node6 [color="green", penwidth=1, label = "Да"];
+node6 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Мурка  "; ]
+
+node5 -> node7 [color="red", penwidth=1, label = "Нет"];
+node7 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Родитель  "; ]
+
+node7 -> node8 [color="green", penwidth=1, label = "Да"];
+node8 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Папа  "; ]
+
+node7 -> node9 [color="red", penwidth=1, label = "Нет"];
+node9 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Черепаха  "; ]
 
 }

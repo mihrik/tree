@@ -9,16 +9,14 @@ int main(int argc, const char * const argv[])
 
     FILE *fp = fopen(TREE_DATA_FILE, "r");
 
-    node_t root = {.value = 0, .left_child = NULL, .right_child = NULL, .parent = NULL};
+    node_t root = {.value = NULL, .left_child = NULL, .right_child = NULL, .parent = NULL};
 
     read_tree(fp, &root, NULL);
-    fclose(fp);
 
-    fp = fopen(TREE_DATA_FILE, "w");
     akinator(&root);
 
+    fp = fopen(TREE_DATA_FILE, "w");
     print_tree(fp, &root);
-
     print_html(&root, FNAME, PIC_NAME);
 
     tree_dtor(&root);

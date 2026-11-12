@@ -4,12 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
-typedef int node_elem_t;
-const node_elem_t POISON = 0x69696969;
-#define deb_spec "%d"
+typedef char * node_elem_t;
+const node_elem_t POISON = NULL;
+#define deb_spec "%s"
+const int MAX_PHRASE_LEN = 50;
 
-const node_elem_t ROOT_VALUE = 50;
+const char * const root_value = "Zhivotnoe?";
+
+const node_elem_t ROOT_VALUE = NULL;
 const char * const TREE_DATA_FILE = "txt_files/tree_data.txt";
 
 typedef enum error_codes
