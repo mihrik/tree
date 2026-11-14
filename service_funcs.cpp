@@ -15,20 +15,31 @@ error_codes args_analysis(int argc, const char * const argv[])
     }
 }
 
-int get_option(void)
+int get_option(get_opt_mode mode)
 {
     char phrase[MAX_PHRASE_SIZE] = {};
     bool read_successfully = false;
+    bool wrong_condition = false;
     int ch = '\0';
 
     while (!read_successfully)
     {
         assert(fgets(phrase, MAX_PHRASE_SIZE, stdin));
 
-        if (phrase[0] != tolower('y') && phrase[0] != tolower('n'))
+        if (mode == Y_or_N)
+            wrong_condition = (phrase[0] != tolower('y') && phrase[0] != tolower('n'));
+        else if (mode == ABCDEF)
+            wrong_condition = (phrase[0] != tolower('a') && phrase[0] != tolower('b') && phrase[0] != tolower('c') && phrase[0] != tolower('d') && phrase[0] != tolower('e') && phrase[0] != tolower('f'));
+
+        if (wrong_condition)
         {
             phrase[strlen(phrase) - 1] = '\0';
-            PRINT_COLOR(RED, "%s не является допустимым вводом, введите y или n\n", phrase);
+            if (mode == Y_or_N)
+            {
+                PRINT_COLOR(RED, "%s не является допустимым вводом, введите y или n\n", phrase);
+            }
+            else if (mode == ABCDEF)
+                PRINT_COLOR(RED, "%s не является допустимым вводом, введите a, b, c, d, e или f\n", phrase);
         }
         else
         {
@@ -40,7 +51,12 @@ int get_option(void)
             else
             {
                 phrase[strlen(phrase) - 1] = '\0';
-                PRINT_COLOR(RED, "%s не является допустимым вводом, введите y или n\n", phrase);
+                if (mode == Y_or_N)
+                {
+                    PRINT_COLOR(RED, "%s не является допустимым вводом, введите y или n\n", phrase);
+                }
+                else if (mode == ABCDEF)
+                    PRINT_COLOR(RED, "%s не является допустимым вводом, введите a, b, c, d, e или f\n", phrase);
             }
         }
 
@@ -64,4 +80,9 @@ int check_clear_buf(char *buffer)
         buffer++;
     }
     return all_space;
+}
+
+void clear_buf(void)
+{
+    while (getchar() != '\n');
 }
