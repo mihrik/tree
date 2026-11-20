@@ -1,0 +1,39 @@
+digraph {
+
+splines=line;
+node1 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Университет  "; ]
+
+node1 -> node2 [color="GREEN_", penwidth=1, label = "Да"];
+node2 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Учусь там  "; ]
+
+node2 -> node3 [color="GREEN_", penwidth=1, label = "Да"];
+node3 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Физтех  "; ]
+
+node2 -> node4 [color="RED_", penwidth=1, label = "Нет"];
+node4 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Диплом без гемора  "; ]
+
+node4 -> node5 [color="GREEN_", penwidth=1, label = "Да"];
+node5 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Синергия  "; ]
+
+node4 -> node6 [color="RED_", penwidth=1, label = "Нет"];
+node6 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Бауманка  "; ]
+
+node1 -> node7 [color="RED_", penwidth=1, label = "Нет"];
+node7 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Провёл детство  "; ]
+
+node7 -> node8 [color="GREEN_", penwidth=1, label = "Да"];
+node8 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Калуга  "; ]
+
+node7 -> node9 [color="RED_", penwidth=1, label = "Нет"];
+node9 [shape=Mrecord; style = filled; fillcolor = "#94e8f1"; color = "#000000";
+  label = "Москва  "; ]
+
+}

@@ -1,6 +1,6 @@
-#include "h_files/tree.h"
-#include "h_files/service.h"
-#include "h_files/dump.h"
+#include "../h_files/tree.h"
+#include "../h_files/service.h"
+#include "../h_files/dump.h"
 #include <unistd.h>
 
 #define nice_output puts
@@ -108,8 +108,6 @@ error_codes print_tree(FILE *fp, node_t *root)
 
 error_codes akinator(node_t *node)
 {
-
-
     SAY(deb_spec "?\n", node->value);
 
     int answer = get_option(Y_or_N);
@@ -203,13 +201,14 @@ error_codes educate_akinator(node_t *node)
 
     new_val = strdup(user_input);
 
-    SAY("Чем " deb_spec " отличается от " deb_spec "?", new_val, node->value);
+    SAY("Чем " deb_spec " отличается от " deb_spec "?\n", new_val, node->value);
     printf("<" deb_spec ">:", new_val);
 
     node_ctor(node, new_val, LEFT);
     node_ctor(node, old_val, RIGHT);
 
     scanf(" %[^\n]" , user_input);
+    clear_buf();
 
     new_val = strdup(user_input);
 
@@ -398,7 +397,7 @@ error_codes play_akinator(const char * const argv[], node_t *root, FILE *fp)
                      }
             default :
                      {
-                          PRINT_COLOR(EXTRA_RED, "Неизвестная команда\n");
+                          PRINT_COLOR(EXTRA_RED__, "Неизвестная команда\n");
 
                           exit(0);
                      }
@@ -411,16 +410,18 @@ error_codes play_akinator(const char * const argv[], node_t *root, FILE *fp)
     if (fp == NULL)
         return FILE_READING_ERROR;
 
+    print_tree(fp, root);
+
     return SUCCESSFUL_RETURN;
 }
 
 void draw_menu(void)
 {
     puts("                                              ===Игровое меню===\n\n");
-    PRINT_COLOR(RED, "                                          a) Показать базу данных программы.\n");
-    PRINT_COLOR(ORANGE, "                                          b) Запустить акинатора.\n");
-    PRINT_COLOR(YELLOW, "                                          c) Визуализация базы данных.\n");
-    PRINT_COLOR(GREEN, "                                          d) Определение названия.\n");
-    PRINT_COLOR(BLUE, "                                          e) Сравнить два названия.\n");
-    PRINT_COLOR(PURPLE, "                                          f) Выйти из игры.\n\n");
+    PRINT_COLOR(RED_, "                                          a) Показать базу данных программы.\n");
+    PRINT_COLOR(ORANGE_, "                                          b) Запустить акинатора.\n");
+    PRINT_COLOR(YELLOW_, "                                          c) Визуализация базы данных.\n");
+    PRINT_COLOR(GREEN_, "                                          d) Определение названия.\n");
+    PRINT_COLOR(BLUE_, "                                          e) Сравнить два названия.\n");
+    PRINT_COLOR(PURPLE_, "                                          f) Выйти из игры.\n\n");
 }

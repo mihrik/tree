@@ -1,5 +1,5 @@
-#include "h_files/dump.h"
-#include "h_files/colors.h"
+#include "../h_files/dump.h"
+#include "../h_files/colors.h"
 
 static int pic_num = 0;
 static int node_num = 0;
@@ -12,11 +12,11 @@ error_codes print_spears(node_t *root, FILE *png)
     {
         if ( root->parent != NULL && root == root->parent->left_child)
         {
-            fprintf(png, "node%d [color=\"green\", penwidth=1, label = \"Да\"];\n", node_num);
+            fprintf(png, "node%d [color=\"GREEN_\", penwidth=1, label = \"Да\"];\n", node_num);
         }
         else if (root->parent != NULL)
         {
-            fprintf(png, "node%d [color=\"red\", penwidth=1, label = \"Нет\"];\n", node_num);
+            fprintf(png, "node%d [color=\"RED_\", penwidth=1, label = \"Нет\"];\n", node_num);
         }
     }
 
@@ -46,7 +46,7 @@ error_codes prepare_png(node_t *root, const char fname[])
 
     if (png == NULL)
     {
-        PRINT_COLOR(EXTRA_RED, "UNAVAILABLE FILE: <%s>, while doing prepare_png\n", fname);
+        PRINT_COLOR(EXTRA_RED__, "UNAVAILABLE FILE: <%s>, while doing prepare_png\n", fname);
         return UNAVAILABLE_FILE;
     }
 
@@ -69,7 +69,7 @@ error_codes print_html(node_t *root, const char fname[], const char pic_name[])
 
     if (png == NULL)
     {
-        PRINT_COLOR(EXTRA_RED, "UNAVAILABLE FILE: <%s>, while doing prepare_png\n", fname);
+        PRINT_COLOR(EXTRA_RED__, "UNAVAILABLE FILE: <%s>, while doing prepare_png\n", fname);
         return UNAVAILABLE_FILE;
     }
 

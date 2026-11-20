@@ -1,4 +1,4 @@
-#include "h_files/ascii.h"
+#include "../h_files/ascii.h"
 
 void print_ascii(FILE *art_addres, int times)
 {

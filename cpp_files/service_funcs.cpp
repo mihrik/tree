@@ -1,5 +1,5 @@
-#include "h_files/tree.h"
-#include "h_files/service.h"
+#include "../h_files/tree.h"
+#include "../h_files/service.h"
 
 error_codes args_analysis(int argc, const char * const argv[])
 {
@@ -36,10 +36,10 @@ int get_option(get_opt_mode mode)
             phrase[strlen(phrase) - 1] = '\0';
             if (mode == Y_or_N)
             {
-                PRINT_COLOR(RED, "%s не является допустимым вводом, введите y или n\n", phrase);
+                PRINT_COLOR(RED_, "%s не является допустимым вводом, введите y или n\n", phrase);
             }
             else if (mode == ABCDEF)
-                PRINT_COLOR(RED, "%s не является допустимым вводом, введите a, b, c, d, e или f\n", phrase);
+                PRINT_COLOR(RED_, "%s не является допустимым вводом, введите a, b, c, d, e или f\n", phrase);
         }
         else
         {
@@ -53,10 +53,10 @@ int get_option(get_opt_mode mode)
                 phrase[strlen(phrase) - 1] = '\0';
                 if (mode == Y_or_N)
                 {
-                    PRINT_COLOR(RED, "%s не является допустимым вводом, введите y или n\n", phrase);
+                    PRINT_COLOR(RED_, "%s не является допустимым вводом, введите y или n\n", phrase);
                 }
                 else if (mode == ABCDEF)
-                    PRINT_COLOR(RED, "%s не является допустимым вводом, введите a, b, c, d, e или f\n", phrase);
+                    PRINT_COLOR(RED_, "%s не является допустимым вводом, введите a, b, c, d, e или f\n", phrase);
             }
         }
 

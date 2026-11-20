@@ -5,7 +5,10 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include "colors.h"
 
+
+const int MAX_DEFINE_LEN = 1000; // TODO TO ANOTHER .h
 typedef char * node_elem_t;
 const node_elem_t POISON = NULL;
 #define deb_spec "%s"
